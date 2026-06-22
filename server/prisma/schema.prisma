@@ -6,88 +6,70 @@ datasource db {
   provider = "postgresql"
 }
 
-enum UserRole {
-  STUDENT
-  COACH
-  ADMIN
-}
-
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  firstName String
-  lastName  String
-  role      UserRole @default(STUDENT)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  studentProfile StudentProfile?
+  id             Int               @id @default(autoincrement())
+  email          String            @unique
+  password       String
+  firstName      String
+  lastName       String
+  role           UserRole          @default(STUDENT)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
   coachProfile   CoachProfile?
-
-  achievements UserAchievement[]
+  studentProfile StudentProfile?
+  achievements   UserAchievement[]
 }
 
 model StudentProfile {
-  id     Int @id @default(autoincrement())
-  userId Int @unique
-
-  rating Int @default(0)
-  level  Int @default(1)
-  xp     Int @default(0)
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id     Int  @id @default(autoincrement())
+  userId Int  @unique
+  rating Int  @default(0)
+  level  Int  @default(1)
+  xp     Int  @default(0)
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model CoachProfile {
-  id     Int @id @default(autoincrement())
-  userId Int @unique
-
+  id          Int     @id @default(autoincrement())
+  userId      Int     @unique
   description String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Achievement {
-  id          Int    @id @default(autoincrement())
+  id          Int               @id @default(autoincrement())
   title       String
   description String
-
-  users UserAchievement[]
+  users       UserAchievement[]
 }
 
 model UserAchievement {
-  id            Int @id @default(autoincrement())
-
+  id            Int         @id @default(autoincrement())
   userId        Int
   achievementId Int
-
-  receivedAt DateTime @default(now())
-
-  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  achievement Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  receivedAt    DateTime    @default(now())
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model PuzzleTheme {
-  id   Int    @id @default(autoincrement())
-  name String @unique
-
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
   puzzles Puzzle[]
 }
 
 model Puzzle {
-  id Int @id @default(autoincrement())
+  id         Int         @id @default(autoincrement())
+  title      String
+  fen        String
+  solution   String
+  difficulty Int         @default(1)
+  themeId    Int
+  theme      PuzzleTheme @relation(fields: [themeId], references: [id], onDelete: Cascade)
+}
 
-  title String
-
-  fen String
-
-  solution String
-
-  difficulty Int @default(1)
-
-  themeId Int
-
-  theme PuzzleTheme @relation(fields: [themeId], references: [id], onDelete: Cascade)
+enum UserRole {
+  STUDENT
+  COACH
+  ADMIN
 }
