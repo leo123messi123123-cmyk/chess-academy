@@ -18,4 +18,18 @@ router.get("/", puzzleController.getPuzzles);
 
 router.get("/:id", puzzleController.getPuzzleById);
 
+router.put(
+  "/:id",
+  authMiddleware,
+  roleMiddleware(["ADMIN"]),
+  puzzleController.updatePuzzle,
+);
+
+router.delete(
+  "/:id",
+  authMiddleware,
+  roleMiddleware(["ADMIN"]),
+  puzzleController.deletePuzzle,
+);
+
 module.exports = router;

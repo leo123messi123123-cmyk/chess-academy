@@ -78,8 +78,63 @@ async function getPuzzleById(req, res) {
   }
 }
 
+async function updatePuzzle(req, res) {
+  try {
+    const id = Number(req.params.id);
+
+    const { title, fen, solution, difficulty, themeId } = req.body;
+
+    const puzzle = await prisma.puzzle.update({
+      where: {
+        id,
+      },
+      data: {
+        title,
+        fen,
+        solution,
+        difficulty,
+        themeId,
+      },
+    });
+
+    res.json({
+      success: true,
+      puzzle,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
+
+async function deletePuzzle(req, res) {
+  try {
+    const id = Number(req.params.id);
+
+    await prisma.puzzle.delete({
+      where: {
+        id,
+      },
+    });
+
+    res.json({
+      success: true,
+      message: "Задача удалена",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
+
 module.exports = {
   createPuzzle,
   getPuzzles,
   getPuzzleById,
+  updatePuzzle,
+  deletePuzzle,
 };
