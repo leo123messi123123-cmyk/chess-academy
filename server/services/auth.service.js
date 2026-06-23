@@ -1,42 +1,38 @@
 const prisma = require("../db/prisma");
 const bcrypt = require("bcrypt");
+const { generateToken } = require("../utils/jwt");
 
-async function registerUser(data) {
-  const { email, password, firstName, lastName } = data;
-
-  const existingUser = await prisma.user.findUnique({
+async function login(email, password) {
+  const user = await prisma.user.findUnique({
     where: {
       email,
     },
   });
 
-  if (existingUser) {
-    throw new Error("Пользователь уже существует");
+  if (!user) {
+    throw new Error("Пользователь не найден");
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const isPasswordValid = await bcrypt.compare(password, user.password);
 
-  const user = await prisma.user.create({
-    data: {
-      email,
-      password: hashedPassword,
-      firstName,
-      lastName,
+  if (!isPasswordValid) {
+    throw new Error("Неверный пароль");
+  }
 
-      studentProfile: {
-        create: {},
-      },
+  const token = generateToken(user);
+
+  return {
+    token,
+    user: {
+      id: user.id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      role: user.role,
     },
-
-    include: {
-      studentProfile: true,
-    },
-  });
-
-  const { password: _, ...userWithoutPassword } = user;
-  return userWithoutPassword;
+  };
 }
 
 module.exports = {
-  registerUser,
+  login,
 };

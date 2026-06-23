@@ -1,13 +1,15 @@
-const authRoutes = require("./routes/auth.routes");
 const express = require("express");
 const cors = require("cors");
 const prisma = require("./db/prisma");
+const authRoutes = require("./routes/auth.routes");
+const userRoutes = require("./routes/user.routes");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 
 const PORT = 3000;
 
@@ -34,10 +36,6 @@ app.get("/api/test-db", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Сервер запущен на порту ${PORT}`);
-});
-
 app.post("/api/users", async (req, res) => {
   try {
     const { email, password, firstName, lastName } = req.body;
@@ -61,4 +59,8 @@ app.post("/api/users", async (req, res) => {
       error: e.message,
     });
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`Сервер запущен на порту ${PORT}`);
 });
