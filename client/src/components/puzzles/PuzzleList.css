@@ -1,0 +1,9 @@
+.puzzle-list {
+  margin-top: 32px;
+}
+
+.puzzle-list__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}

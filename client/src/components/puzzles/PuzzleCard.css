@@ -1,0 +1,39 @@
+.puzzle-card {
+  width: 100%;
+  max-width: 340px;
+}
+
+.puzzle-card__title {
+  margin: 0 0 12px;
+  font-size: 20px;
+  color: #111827;
+}
+
+.puzzle-card__board {
+  margin: 12px 0 16px;
+}
+
+.puzzle-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  color: #374151;
+  font-size: 14px;
+}
+
+.puzzle-card__button {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.puzzle-card__button:hover {
+  background: #1d4ed8;
+}

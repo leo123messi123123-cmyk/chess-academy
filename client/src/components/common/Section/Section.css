@@ -1,0 +1,9 @@
+.section {
+  margin-top: 32px;
+}
+
+.section h2 {
+  margin: 0 0 16px;
+  font-size: 26px;
+  color: #111827;
+}

@@ -1,4 +1,8 @@
 import type { Puzzle } from "../../types/puzzle";
+import Button from "../common/Button/Button";
+import Card from "../common/Card/Card";
+import ChessBoard from "./ChessBoard";
+import "./PuzzleCard.css";
 
 interface PuzzleCardProps {
   puzzle: Puzzle;
@@ -6,14 +10,22 @@ interface PuzzleCardProps {
 
 function PuzzleCard({ puzzle }: PuzzleCardProps) {
   return (
-    <article>
-      <h3>{puzzle.title}</h3>
+    <Card>
+      <article className="puzzle-card">
+        <h3 className="puzzle-card__title">{puzzle.title}</h3>
 
-      <p>Тема: {puzzle.theme.name}</p>
-      <p>Сложность: {puzzle.difficulty}</p>
-      <p>Решение: {puzzle.solution}</p>
-      <p>FEN: {puzzle.fen}</p>
-    </article>
+        <div className="puzzle-card__board">
+          <ChessBoard fen={puzzle.fen} />
+        </div>
+
+        <div className="puzzle-card__info">
+          <span>Тема: {puzzle.theme.name}</span>
+          <span>Сложность: {puzzle.difficulty}</span>
+        </div>
+
+        <Button>Решить</Button>
+      </article>
+    </Card>
   );
 }
 
