@@ -1,0 +1,55 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dashboard__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+}
+
+.dashboard__actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.dashboard__action {
+  text-align: left;
+}
+
+.dashboard__mission-progress {
+  width: 100%;
+  height: 12px;
+  margin: 14px 0 8px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.dashboard__mission-progress-fill {
+  width: 60%;
+  height: 100%;
+  background: #2563eb;
+}
+
+.dashboard__task-list {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.dashboard__task-list li {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+  .dashboard__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard__actions {
+    grid-template-columns: 1fr;
+  }
+}
