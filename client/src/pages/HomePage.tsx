@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import ThemeList from "../components/themes/ThemeList";
+import PuzzleList from "../components/puzzles/PuzzleList";
 import { getThemes } from "../services/themeService";
 import { getPuzzles } from "../services/puzzleService";
-import type { PuzzleTheme } from "../types/puzzle";
-import type { Puzzle } from "../types/puzzle";
+import type { PuzzleTheme, Puzzle } from "../types/puzzle";
 
 function HomePage() {
   const [themes, setThemes] = useState<PuzzleTheme[]>([]);
@@ -25,30 +26,12 @@ function HomePage() {
   }, []);
 
   return (
-    <div>
+    <main>
       <h1>Chess Academy</h1>
 
-      <h2>Темы задач</h2>
-
-      <ul>
-        {themes.map((theme) => (
-          <li key={theme.id}>{theme.name}</li>
-        ))}
-      </ul>
-
-      <h2>Задачи</h2>
-
-      <ul>
-        {puzzles.map((puzzle) => (
-          <li key={puzzle.id}>
-            <strong>{puzzle.title}</strong>
-            <div>Тема: {puzzle.theme.name}</div>
-            <div>Сложность: {puzzle.difficulty}</div>
-            <div>Решение: {puzzle.solution}</div>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <ThemeList themes={themes} />
+      <PuzzleList puzzles={puzzles} />
+    </main>
   );
 }
 
