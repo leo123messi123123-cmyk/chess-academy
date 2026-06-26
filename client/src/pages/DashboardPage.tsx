@@ -3,8 +3,10 @@ import Card from "../components/common/Card/Card";
 import PageTitle from "../components/common/PageTitle/PageTitle";
 import Section from "../components/common/Section/Section";
 import "./DashboardPage.css";
+import { useNavigate } from "react-router-dom";
 
 function DashboardPage() {
+  const navigate = useNavigate();
   return (
     <div className="dashboard">
       <PageTitle
@@ -43,7 +45,7 @@ function DashboardPage() {
             <div className="dashboard__action">
               <h3>Практика</h3>
               <p>Перейти к шахматным задачам.</p>
-              <Button>Начать</Button>
+              <Button onClick={() => navigate("/practice")}>Начать</Button>
             </div>
           </Card>
 
@@ -51,7 +53,7 @@ function DashboardPage() {
             <div className="dashboard__action">
               <h3>Учебный класс</h3>
               <p>Позже здесь будут уроки и материалы тренера.</p>
-              <Button>Открыть</Button>
+              <Button onClick={() => navigate("/classroom")}>Открыть</Button>
             </div>
           </Card>
 
@@ -59,7 +61,7 @@ function DashboardPage() {
             <div className="dashboard__action">
               <h3>Профиль</h3>
               <p>Посмотреть шахматный путь и достижения.</p>
-              <Button>Перейти</Button>
+              <Button onClick={() => navigate("/profile")}>Перейти</Button>
             </div>
           </Card>
         </div>

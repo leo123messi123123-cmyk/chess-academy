@@ -3,6 +3,7 @@ import AppLayout from "./layouts/AppLayout";
 import DashboardPage from "./pages/DashboardPage";
 import PracticePage from "./pages/PracticePage";
 import ProfilePage from "./pages/ProfilePage";
+import ClassroomPage from "./pages/ClassroomPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route element={<AppLayout />}>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/practice" element={<PracticePage />} />
+          <Route path="/classroom" element={<ClassroomPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Route>
       </Routes>

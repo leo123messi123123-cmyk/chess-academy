@@ -10,6 +10,7 @@ function AppLayout() {
         <nav className="sidebar__nav">
           <NavLink to="/">🏛 Академия</NavLink>
           <NavLink to="/practice">📚 Практика</NavLink>
+          <NavLink to="/classroom">👨‍🏫 Учебный класс</NavLink>
           <NavLink to="/profile">👤 Профиль</NavLink>
         </nav>
       </aside>
