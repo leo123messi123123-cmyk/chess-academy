@@ -1,0 +1,59 @@
+.practice-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.practice-page__hero {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 24px;
+}
+
+.practice-page__training-types {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.practice-page__training-card h3 {
+  margin: 0 0 8px;
+}
+
+.practice-page__training-card p {
+  margin: 0 0 16px;
+  color: #6b7280;
+}
+
+.practice-page__skills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.practice-page__skill {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+  font-family: monospace;
+}
+
+@media (max-width: 1000px) {
+  .practice-page__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-page__training-types {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .practice-page__training-types {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-page__skill {
+    grid-template-columns: 1fr;
+  }
+}

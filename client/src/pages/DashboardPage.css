@@ -53,3 +53,12 @@
     grid-template-columns: 1fr;
   }
 }
+.dashboard__action {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.dashboard__action p {
+  flex: 1;
+}

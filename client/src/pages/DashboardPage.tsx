@@ -43,7 +43,7 @@ function DashboardPage() {
         <div className="dashboard__actions">
           <Card>
             <div className="dashboard__action">
-              <h3>Практика</h3>
+              <h3>Тренировка</h3>
               <p>Перейти к шахматным задачам.</p>
               <Button onClick={() => navigate("/practice")}>Начать</Button>
             </div>
