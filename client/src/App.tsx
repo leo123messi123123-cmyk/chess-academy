@@ -4,6 +4,7 @@ import DashboardPage from "./pages/DashboardPage";
 import PracticePage from "./pages/PracticePage";
 import ProfilePage from "./pages/ProfilePage";
 import ClassroomPage from "./pages/ClassroomPage";
+import WarmupPage from "./pages/WarmupPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/practice" element={<PracticePage />} />
           <Route path="/classroom" element={<ClassroomPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/warmup" element={<WarmupPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

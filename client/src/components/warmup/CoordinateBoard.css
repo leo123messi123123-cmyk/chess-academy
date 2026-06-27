@@ -1,0 +1,29 @@
+.coordinate-board {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #d1d5db;
+}
+
+.coordinate-board__square {
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.coordinate-board__square--light {
+  background: #f0d9b5;
+}
+
+.coordinate-board__square--dark {
+  background: #b58863;
+}
+
+.coordinate-board__square:hover {
+  outline: 3px solid #2563eb;
+  outline-offset: -3px;
+}

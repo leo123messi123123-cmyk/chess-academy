@@ -16,11 +16,18 @@
   gap: 18px;
 }
 
+.practice-page__training-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .practice-page__training-card h3 {
   margin: 0 0 8px;
 }
 
 .practice-page__training-card p {
+  flex: 1;
   margin: 0 0 16px;
   color: #6b7280;
 }

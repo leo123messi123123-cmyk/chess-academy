@@ -4,8 +4,10 @@ import PageTitle from "../components/common/PageTitle/PageTitle";
 import Section from "../components/common/Section/Section";
 import HomePage from "./HomePage";
 import "./PracticePage.css";
+import { useNavigate } from "react-router-dom";
 
 function PracticePage() {
+  const navigate = useNavigate();
   return (
     <div className="practice-page">
       <PageTitle
@@ -32,7 +34,7 @@ function PracticePage() {
               основной тренировкой.
             </p>
 
-            <Button>Начать разминку</Button>
+            <Button onClick={() => navigate("/warmup")}>Начать разминку</Button>
           </Section>
         </Card>
       </div>
